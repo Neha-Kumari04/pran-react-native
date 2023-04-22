@@ -1,19 +1,28 @@
-import React from 'react'
-import { View,Text,StyleSheet,Image } from 'react-native'
+import {React, useState} from 'react'
+import { View,Text,StyleSheet,Image} from 'react-native'
 import pranLogo from '../assets/pranLogo.png';
 import { Ionicons } from '@expo/vector-icons';
+import Colors from '../global/color';
+import { Pressable } from 'react-native';
+import ProfileDropDownModal from './ProfileDropDownModal';
+
 
 const Navbar = () => {
+    const [profileModal,setProfileModal]=useState()
+
   return (
     <View style={styles.container}>
         <View style={styles.navbarstyle}>
             <View style={styles.logoContainer1}>
                <Image style={styles.logo} source={pranLogo}/>
            </View>
-            <View style={styles.logoContainer1}>
+
+            <Pressable onPress={()=>{setProfileModal(<ProfileDropDownModal profileModal={setProfileModal}/>)}} style={styles.logoContainer1}>
             <Ionicons name="person-circle" size={35} color="#004AAD" />
-           </View>
+           </Pressable>
+           
         </View> 
+              {profileModal?profileModal:""}
     </View>
   )
 }
@@ -23,7 +32,8 @@ export default Navbar
 const styles=StyleSheet.create({
     container:{
          width:"100%",
-         marginTop:5,
+         marginTop:2,
+         backgroundColor:Colors.backgroundColor
          
     },
     navbarstyle:{
