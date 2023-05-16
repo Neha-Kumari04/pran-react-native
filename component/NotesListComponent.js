@@ -4,15 +4,16 @@ import Colors from "../global/color";
 
 
 
-function NotesListComponent(){
+function NotesListComponent(props){
+    //  console.log(props.data.item)
     return(
         <View style={styles.listContainer}>
         <View style={styles.iconContainer}>
         <FontAwesome5 name="book" size={30} color="#1ac2ce" />
         </View>
         <View>
-        <Text style={{fontWeight:"bold",fontSize:18,color:Colors.primaryText}}>Java full notes</Text>
-        <Text style={{color:Colors.secondaryText}}>By : Rahul sir</Text>
+        <Text style={{fontWeight:"bold",fontSize:18,color:Colors.primaryText}}>{props.data.item.title}</Text>
+        <Text style={{color:Colors.secondaryText}}>{props.data.item.desc.slice(0,25)+"..."}</Text>
         </View>
     
       
@@ -30,7 +31,6 @@ const styles=StyleSheet.create({
     
      marginVertical:5,
      backgroundColor:Colors.secondaryBackground,
-     width:"90%",
      marginHorizontal:10,
      borderRadius:8,
      flexDirection:"row",
